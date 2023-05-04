@@ -12,7 +12,9 @@ class CardCategoria extends StatelessWidget {
     return MaterialButton(
       onPressed: onPressed,
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.only(
+          top: 8,
+        ),
         child: Container(
           decoration: BoxDecoration(
               color: color, borderRadius: BorderRadius.circular(16)),

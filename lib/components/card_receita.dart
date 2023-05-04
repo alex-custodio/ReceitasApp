@@ -32,7 +32,15 @@ class CardReceita extends StatelessWidget {
                     topRight: Radius.circular(20),
                   ),
                   child: Image.network(img, fit: BoxFit.cover, height: 240, width: double.infinity,),
-                )
+                ),
+                Container(margin: EdgeInsets.only(
+                  left: 132,
+                  top: 200
+                ),
+                  child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(nome, style: TextStyle(fontSize: 20, color: Colors.white,),),
+                ), decoration: BoxDecoration(color: Colors.black54), width: 300,)
               ],
             ),
             Padding(
