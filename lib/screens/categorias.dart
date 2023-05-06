@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:receitasapp/components/card_categoria.dart';
 import 'package:receitasapp/constants.dart';
+import 'package:receitasapp/data/dummy_data.dart';
 import 'package:receitasapp/screens/tela_receitas.dart';
 
 import '../models/receita.dart';
@@ -26,87 +27,23 @@ class Categorias extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           centerTitle: true,
           title: Text("Categorias"),
           leading: Icon(Icons.menu),
           backgroundColor: kPrimaryColor,
         ),
-        body: Column(
-          children: [
-            Row(
-              children: [
-                CardCategoria(
-                  color: Colors.deepPurpleAccent,
-                  categoriaNome: "Italiano",
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (builder) =>
-                                TelaReceitas(receitas: receitasItalianas)));
-                  },
-                ),
-                CardCategoria(
-                  color: Colors.deepOrange,
-                  categoriaNome: "Rápido & Fácil",
-                  onPressed: () {},
-                )
-              ],
-            ),
-            Row(
-              children: [
-                CardCategoria(
-                    color: Colors.orange,
-                    categoriaNome: "Hambúrgueres",
-                    onPressed: () {}),
-                CardCategoria(
-                    color: Color.fromARGB(255, 224, 211, 91),
-                    categoriaNome: "Alemã",
-                    onPressed: () {})
-              ],
-            ),
-            Row(
-              children: [
-                CardCategoria(
-                    color: Colors.orangeAccent,
-                    categoriaNome: "Leve e Saudável",
-                    onPressed: () {}),
-                CardCategoria(
-                    color: Color.fromARGB(255, 81, 177, 84),
-                    categoriaNome: "Estética",
-                    onPressed: () {})
-              ],
-            ),
-            Row(
-              children: [
-                CardCategoria(
-                    color: Colors.lightBlue,
-                    categoriaNome: "Café da Manhã",
-                    onPressed: () {}),
-                CardCategoria(
-                    color: Colors.lightGreenAccent,
-                    categoriaNome: "Asiática",
-                    onPressed: () {})
-              ],
-            ),
-            Row(
-              children: [
-                CardCategoria(
-                    color: Colors.pinkAccent,
-                    categoriaNome: "Francesa",
-                    onPressed: () {}),
-                CardCategoria(
-                    color: Color.fromARGB(255, 107, 132, 115),
-                    categoriaNome: "Verão",
-                    onPressed: () {})
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+        body: GridView(
+          padding: EdgeInsets.all(25),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            childAspectRatio: 3 / 2
+          ),
+          children: DUMMY_CATEGORIES.map((cat) => CardCategoria(category: cat)).toList(),
+        )
+      );
   }
 }

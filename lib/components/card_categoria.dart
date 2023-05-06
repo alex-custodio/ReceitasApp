@@ -1,36 +1,24 @@
 import 'package:flutter/material.dart';
 
+import '../models/category.dart';
+
 class CardCategoria extends StatelessWidget {
-  final Color color;
-  final String categoriaNome;
-  final Function() onPressed;
-  const CardCategoria(
-      {super.key, required this.color, required this.categoriaNome, required this.onPressed});
+  final Category category;
+  const CardCategoria({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: onPressed,
-      child: Padding(
-        padding: const EdgeInsets.only(
-          top: 8,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-              color: color, borderRadius: BorderRadius.circular(16)),
-          child: Padding(
-            padding: const EdgeInsets.only(top: 12, left: 12),
-            child: Text(
-              categoriaNome,
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 44, 44, 44)),
-            ),
-          ),
-          width: 172,
-          height: 100,
-        ),
+    return Container(
+      child: Text(category.title, style: Theme.of(context).textTheme.headline1,),
+      padding: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        gradient: LinearGradient(colors: [
+          category.color.withOpacity(0.5),
+          category.color,
+        ],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight)
       ),
     );
   }
